@@ -20,9 +20,9 @@ public class Acorde {
     private String nome;
     private Long repeticoes;
 
-    @ManyToOne
-    @JoinColumn(name = "musica_id")
-    private Musica musica;
+//    @ManyToOne
+//    @JoinColumn(name = "musica_id")
+//    private Musica musica;
 
 
 }
