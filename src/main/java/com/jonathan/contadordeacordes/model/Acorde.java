@@ -18,7 +18,7 @@ public class Acorde {
 
     private String letra;
     private String nome;
-    private Long repeticoes;
+//    private Long repeticoes;
 
 //    @ManyToOne
 //    @JoinColumn(name = "musica_id")
