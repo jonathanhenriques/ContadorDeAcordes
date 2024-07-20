@@ -27,4 +27,8 @@ public class AcordeService {
     public Acorde getById(Long id){
         return acordeRepository.getReferenceById(id);
     }
+
+    public Acorde post(Acorde acorde) {
+        return acordeRepository.save(acorde);
+    }
 }

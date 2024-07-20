@@ -33,5 +33,10 @@ public class MusicaController {
         return ResponseEntity.ok(musicaService.getById(id));
     }
 
+    @PostMapping
+    public ResponseEntity<Musica> post(@RequestBody Musica musica){
+        return ResponseEntity.ok(musicaService.post(musica));
+    }
+
 
 }

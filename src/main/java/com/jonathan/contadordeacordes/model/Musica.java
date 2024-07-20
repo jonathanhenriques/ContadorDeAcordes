@@ -23,6 +23,7 @@ public class Musica {
 
     private String nome;
 
+
 //    @OneToMany(cascade = CascadeType.ALL)
 //    @OneToMany(mappedBy = "musica")
 //    @JoinColumn(name = "musica_id")

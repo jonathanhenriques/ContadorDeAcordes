@@ -33,5 +33,10 @@ public class AcordeController {
         return ResponseEntity.ok(acordeService.getById(id));
     }
 
+    @PostMapping
+    public ResponseEntity<Acorde> post(@RequestBody Acorde acorde){
+        return ResponseEntity.ok(acordeService.post(acorde));
+    }
+
 
 }

@@ -25,4 +25,8 @@ public class MusicaService {
     public Musica getById(Long id){
         return musicaRepository.getReferenceById(id);
     }
+
+    public Musica post(Musica musica) {
+        return musicaRepository.save(musica);
+    }
 }
