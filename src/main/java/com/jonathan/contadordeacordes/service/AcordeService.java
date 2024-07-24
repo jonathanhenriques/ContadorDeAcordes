@@ -31,4 +31,9 @@ public class AcordeService {
     public Acorde post(Acorde acorde) {
         return acordeRepository.save(acorde);
     }
+
+    public void delete(Long idAcorde) {
+        Acorde acorde = acordeRepository.getReferenceById(idAcorde);
+        acordeRepository.delete(acorde);
+    }
 }
