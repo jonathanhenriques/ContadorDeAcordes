@@ -1,34 +1,21 @@
-FROM ubuntu:latest AS build
+# Etapa de build
+FROM maven:3.8.7-openjdk-17 AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
-COPY . .
+# Copia o código-fonte e arquivos de configuração do projeto para o contêiner
+COPY . /app
+WORKDIR /app
 
-RUN apt-get install maven -y
-# RUN mvn clean install
+# Compila o projeto e gera o JAR
+RUN mvn clean package -DskipTests
 
-# FROM openjdk:17-jdk-slim
-FROM maven:3.8-jdk-17 as builder
-
-
-# # Build a release artifact.
-RUN mvn clean package
-
-
-#
-# Package stage
-#
-# It's important to use OpenJDK 8u191 or above that has container support enabled.
-# https://hub.docker.com/r/adoptopenjdk/openjdk8
-# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+# Etapa de execução
 FROM openjdk:17-jdk-slim
 
-
-
-
-
+# Exponha a porta 8080
 EXPOSE 8080
 
-COPY --from=build /target/contadordeacordes-0.0.1-SNAPSHOT.jar app.jar
+# Copia o JAR gerado na etapa de build para a etapa de execução
+COPY --from=build /app/target/contadordeacordes-0.0.1-SNAPSHOT.jar app.jar
 
+# Define o ponto de entrada para o contêiner
 ENTRYPOINT ["java", "-jar", "app.jar"]
